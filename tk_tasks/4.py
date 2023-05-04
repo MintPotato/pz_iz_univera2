@@ -64,8 +64,7 @@ class GuessGame:
     def __init__(self):
         self.number = randint(0, 101)
         self.tries = 0
-        print(self.number)
-
+        
         GuessWindow(self.number, self.tries)
 
 

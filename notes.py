@@ -1,3 +1,10 @@
+class Singleton(object):
+    def __new__(cls):
+        if not hasattr(cls, 'instance'):
+            cls.instance = super(Singleton, cls).__new__(cls)
+        return cls.instance
+
+
 class Desc:
     def __set_name__(self, owner, name):
         self.name = '_' + name
@@ -27,7 +34,7 @@ class Note:
         self.ton = ton
 
 
-class Notes:
+class Notes(Singleton):
     __slots__ = ['_do', '_re', '_mi', '_fa', '_solt', '_la', '_si']
 
     def __init__(self):

@@ -16,29 +16,31 @@ class BadEmail(Exception):
 
 class User:
     def __init__(self, name: str, email: str, age: int):
-        try:
+
+        self.name = name
+        self.email = email
+        self.age = age
+        
+def check(name, email, age):
+    try:
             age = int(age)
             if age < 0:
                 raise NegativeAge
             elif age < 16:
                 raise LowAge
-        except ValueError:
-            raise ValueError
+    except ValueError:
+        raise ValueError
 
-        if name in catalog.keys():
-            raise NotUniqueName
+    if name in catalog.keys():
+        raise NotUniqueName
 
-        if '@' not in email or not email.split('@')[0] or not email.split('@')[1]:
-            raise BadEmail
-
-        self.name = name
-        self.email = email
-        self.age = age
-
+    if '@' not in email or not email.split('@')[0] or not email.split('@')[1]:
+        raise BadEmail
+    
 def main(users:list):
     for user in users:
         try:
-            check = User(*user)
+            check(*user)
             catalog[user[0]] = User(*user)
         except ValueError:
             print('Возраст должен быть числом')

@@ -67,9 +67,9 @@ a = ListBox()
 b = ListBox()
 c = DictBox()
 
-a.add(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
-b.add(21, 22, 23, 24, 25, 26, 27, 28, 29)
-c.add(30, 31, 32, 33, 34)
+a.add(Item('a', 1), Item('b', 2))
+b.add(Item('c', 3), Item('d', 4), Item('e', 5))
+c.add(Item('f', 6))
 
 repack_boxes(a, b, c)
 print(a.__dict__, b.__dict__, c.__dict__)
